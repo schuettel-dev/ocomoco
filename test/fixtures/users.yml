@@ -1,0 +1,6 @@
+DEFAULT: &DEFAULT
+  encrypted_password: "$2a$12$Ukh8E5Mg4VYXedabtMV.WuRdr3/wRmiW3ySWvlC.ru7Cpn8NKazPO" # "password"
+
+robin:
+  <<: *DEFAULT
+  email: "robin@example.com"

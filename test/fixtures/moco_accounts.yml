@@ -1,0 +1,11 @@
+robin_ltd_batman_moco_account:
+  organization: robin_ltd
+  ocomoco_id: "ocomocoIdRobinBatman"
+  name: "Batman"
+  domain: "batman.mocoapp.com"
+
+robin_ltd_robin_moco_account:
+  organization: robin_ltd
+  ocomoco_id: "ocomocoIdRobinRobin"
+  name: "Robin"
+  domain: "robin.mocoapp.com"

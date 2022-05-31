@@ -1,0 +1,14 @@
+= form_with(model: model, class: "flex flex-col gap-y-4") do |f|
+  .flex.gap-x-4
+    .flex.flex-col.w-full
+      = f.label :name
+      = f.text_field :name, placeholder: MocoAccount.human_attribute_name(:name_placeholder)
+
+    .flex.flex-col.w-full
+      = f.label :domain
+      = f.text_field :domain, placeholder: MocoAccount.human_attribute_name(:domain_placeholder)
+
+  .flex.gap-x-4.items-center
+    - text = model.new_record? ? t("shared.add_with_model", model: model.model_name.human) : t("shared.edit_with_model", model: model.model_name.human)
+    = f.submit text, class: "button"
+    = link_to t("shared.cancel"), model, class: "shy-link"

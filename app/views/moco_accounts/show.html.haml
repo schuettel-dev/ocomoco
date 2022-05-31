@@ -1,0 +1,13 @@
+.flex.flex-col.gap-y-10
+  %h1.text-gray-400= MocoAccount.model_name.human
+
+  .flex.flex-col.gap-y-1
+    .flex.items-baseline.gap-x-2
+      .text-2xl= @moco_account.name
+      %pre.text-gray-500.text-sm= @moco_account.domain
+      = link_to t("shared.edit"), edit_moco_account_path, class: "link text-sm"
+
+  .flex.flex-col
+    %h2= ApiKey.model_name.human
+    %pre= @moco_account.api_key&.value || t("shared.none")
+    = link_to t("shared.edit"), edit_moco_account_api_key_path(@moco_account)

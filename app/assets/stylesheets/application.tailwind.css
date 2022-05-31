@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  @apply uppercase;
+}
+
+.navigation-link {
+  @apply py-2 px-5 rounded bg-sky-100 hover:bg-white transition;
+}
+
+.link {
+  @apply text-sky-500 hover:text-green-500;
+}
+
+.shy-link {
+  @apply opacity-50 hover:opacity-100;
+}
+
+.button {
+  @apply text-green-900 bg-green-400 py-2 px-5 rounded hover:bg-green-300 cursor-pointer;
+}
+
+
+input[type="text"],
+input[type="submit"],
+textarea {
+  @apply rounded;
+}

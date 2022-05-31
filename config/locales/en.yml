@@ -1,0 +1,27 @@
+en:
+  activerecord:
+    attributes:
+      moco_account:
+        api_key: "API key"
+        api_key_placeholder: "Find your key in MOCO"
+        domain: "Domain"
+        domain_placeholder: "company.mocoapp.com"
+        name: "Name"
+        name_placeholder: "Company Ltd"
+    models:
+      api_key:
+        one: "API key"
+        other: "API keys"
+      moco_account:
+        one: "MOCO Account"
+        other: "MOCO Accounts"
+  moco_accounts:
+    shared:
+      add_moco_account: "Add MOCO account"
+  shared:
+    add: "Add"
+    add_with_model: "Add %{model}"
+    cancel: "Cancel"
+    edit: "Edit"
+    edit_with_model: "Edit %{model}"
+    none: "None"

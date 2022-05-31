@@ -1,0 +1,5 @@
+.flex.flex-col.gap-y-10
+  %h1.text-gray-400= t("shared.edit_with_model", model: @moco_account.model_name.human)
+
+  .bg-sky-50.border.border-sky-100.p-8.rounded
+    = render "form", model: @moco_account

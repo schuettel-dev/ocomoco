@@ -1,0 +1,10 @@
+.flex.flex-col.gap-y-10
+  %h1.text-gray-400= MocoAccount.model_name.human(count: 0)
+
+  .flex
+    = link_to t("moco_accounts.shared.add_moco_account"), new_moco_account_path, class: "button"
+
+  .w-full
+    %ul.flex.flex-col.gap-y-4
+      - @moco_accounts.each do |moco_account|
+        %li.flex= link_to moco_account.name, moco_account, class: "p-4 bg-sky-50 rounded w-full hover:bg-sky-100 text-xl"

@@ -1,0 +1,78 @@
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema[7.0].define(version: 2022_05_30_120003) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "api_keys", force: :cascade do |t|
+    t.bigint "moco_account_id"
+    t.string "tenable_type", null: false
+    t.bigint "tenable_id", null: false
+    t.string "value", null: false
+    t.index ["moco_account_id", "tenable_type", "tenable_id"], name: "indx_moco_account_tenable", unique: true
+    t.index ["moco_account_id"], name: "index_api_keys_on_moco_account_id"
+  end
+
+  create_table "moco_accounts", force: :cascade do |t|
+    t.bigint "organization_id", null: false
+    t.string "ocomoco_id", null: false
+    t.string "name", null: false
+    t.string "domain", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ocomoco_id"], name: "index_moco_accounts_on_ocomoco_id", unique: true
+    t.index ["organization_id", "domain"], name: "index_moco_accounts_on_organization_id_and_domain", unique: true
+    t.index ["organization_id", "name"], name: "index_moco_accounts_on_organization_id_and_name", unique: true
+    t.index ["organization_id"], name: "index_moco_accounts_on_organization_id"
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.bigint "owner_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id", "name"], name: "index_organizations_on_owner_id_and_name", unique: true
+    t.index ["owner_id"], name: "index_organizations_on_owner_id"
+  end
+
+  create_table "pipes", force: :cascade do |t|
+    t.bigint "organization_id", null: false
+    t.bigint "from_moco_account_id", null: false
+    t.bigint "to_moco_account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["from_moco_account_id"], name: "index_pipes_on_from_moco_account_id"
+    t.index ["organization_id", "from_moco_account_id", "to_moco_account_id"], name: "indx_organization_from_to_moco_account", unique: true
+    t.index ["organization_id"], name: "index_pipes_on_organization_id"
+    t.index ["to_moco_account_id"], name: "index_pipes_on_to_moco_account_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "api_keys", "moco_accounts"
+  add_foreign_key "moco_accounts", "organizations"
+  add_foreign_key "organizations", "users", column: "owner_id"
+  add_foreign_key "pipes", "moco_accounts", column: "from_moco_account_id"
+  add_foreign_key "pipes", "moco_accounts", column: "to_moco_account_id"
+  add_foreign_key "pipes", "organizations"
+end

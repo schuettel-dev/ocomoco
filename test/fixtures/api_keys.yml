@@ -1,0 +1,9 @@
+robin_ltd_batman_moco_account_organization_api_key:
+  moco_account: robin_ltd_batman_moco_account
+  tenable: robin_ltd_batman_moco_account (MocoAccount)
+  value: "ROBIN-MOCOACCOUNT-001"
+
+robin_ltd_robin_moco_account_organization_api_key:
+  moco_account: robin_ltd_robin_moco_account
+  tenable: robin_ltd_robin_moco_account (MocoAccount)
+  value: "ROBIN-MOCOACCOUNT-002"
